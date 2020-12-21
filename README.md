@@ -5,15 +5,19 @@ binocular cues](https://www.sciencedirect.com/science/article/pii/S0925231220313
 
 ## Data Layout
 ```
-train/                                                # Training scenes
-    [scene_id]_color_[L/R].png                            # All-focus color image
-    [scene_id]_depth_[L/R].png                            # GT disparity image
-    [scene_id]_gauss_depth_[L/R].png                      # Gaussian blurred disparity image used during focal stack synthesis
-test/                                                 # Testing scenes (same layout as train/)
-noise/
-    train/                                            # Training scenes with Poisson noise added
-        [scene_id]_[focal_slice_id]_[L/R]_image.png       # Image for a focal slice
-    test/                                             # Testing scenes with Poisson noise added (same layout as noise/train/)
+binocular_focal_stack_clean/
+    train/                                                # Training scenes
+        [scene_id]_[focal_slice_id]_[L/R]_image.png           # Image for a focal slice
+    test/                                                 # Testing scenes (same layout as ./train/)
+binocular_focal_stack_noise/
+    train/                                                # Training scenes
+        [scene_id]_[focal_slice_id]_[L/R]_image.png           # Image for a focal slice, with Poisson noise added
+    test/                                                 # Testing scenes (same layout as ./train/)
+color_depth_pair/
+    train/                                                # Training scenes
+        [scene_id]_color_[L/R].png                            # All-focus color image
+        [scene_id]_depth_[L/R].png                            # GT disparity image
+    test/                                                 # Testing scenes (same layout as ./train/)
 ```
 For the disparity images, an intensity of ```255``` corresponds to a disparity of ```100``` pixels.
 
